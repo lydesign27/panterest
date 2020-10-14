@@ -1,18 +1,26 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title 'Fin all the best pins on earth' %}
+{% block title 'Pin' %}
 
 {% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-info text-center"> {{ pluralize(pins|length, 'Pin') }} ✅ :</h1>
+      {% for pin in pins %}
+          <article class="my-4">
+              <h2>
+                <a href="{{ path('app_pins_show',{id: pin.id} )}}">{{ pin.title }}</a> 
+              </h2>
+              <p>{{ pin.description |u.truncate(10, '...', false)}} </p>
+              <p>Submitted {{ pin.createdAt | date}} </p>
+          </article>
+      {% endfor %}
 
-    <h1> {{ pluralize(pins|length, 'Pin') }} ✅ :</h1>
-  {% for pin in pins %}
-      <article>
-          <h2>
-            <a href="{{ path('app_pins_show',{id: pin.id} )}} ">{{ pin.title }}</a> 
-          </h2>
-          <p>{{ pin.description |u.truncate(10, '...', false)}} </p>
-          <p>Submitted {{ pin.createdAt | date}} </p>
-      </article>
-  {% endfor %}
+    </div>
+  </div>
+</div>
+
+   
  
 {% endblock %}
