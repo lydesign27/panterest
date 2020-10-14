@@ -1,9 +1,9 @@
-{% extends "base.html.twig" %}
+{% extends "layouts/base.html.twig" %}
 {% block title 'Fin all the best pins on earth' %}
 
 {% block body %}
-<article>
-    <h1>{{ pin.title }} </h1>
+<article class="container">
+    <h1 class="text-danger">{{ pin.title }} </h1>
     <p>{{ pin.description }} </p>
 </article>
 
