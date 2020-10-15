@@ -1,26 +1,31 @@
 {% extends 'layouts/base.html.twig' %}
-
 {% block title 'Pin' %}
-
 {% block body %}
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1 class="text-info text-center"> {{ pluralize(pins|length, 'Pin') }} ✅ :</h1>
-      {% for pin in pins %}
-          <article class="my-4">
-              <h2>
-                <a href="{{ path('app_pins_show',{id: pin.id} )}}">{{ pin.title }}</a> 
-              </h2>
-              <p>{{ pin.description |u.truncate(10, '...', false)}} </p>
-              <p>Submitted {{ pin.createdAt | date}} </p>
-          </article>
+  {% if pins|length > 0 %}
+  <h1 class="mb-4 text-muted text-center "> {{ pluralize(pins|length, 'Pin') }} ✅ :</h1>
+    {% for row in pins|batch(3) %}
+      <div class="row mb-5">
+        {% for pin in row %}
+              <div class="my-4 col-md-4">
+                <article class="pin bg-white rounded shadow">
+                  <div class="mw-100 overflow-hidden">
+                    <a href="{{ path('app_pins_show',{id: pin.id} )}}">
+                      <img class="w-100 rounded-top" src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('build/images/placeholder.png')) | imagine_filter('squared_thumbnail_small') }}" alt="{{ pin.title }}" />
+                    </a>
+                  </div>
+                  <h2 class="pl-3 pt-3 text-secondary">
+                    <a class=" text-muted text-decoration-none" href="{{ path('app_pins_show',{id: pin.id} )}}">{{ pin.title }}</a> 
+                  </h2>
+                  <!-- <p>{{ pin.description |u.truncate(10, '...', false)}} </p> -->
+                  <p class="text-muted  pl-3 pb-3" >Submitted <small>[OWNER FULL NAME]</small>  </p>
+                </article>
+              </div>
+          {% endfor %}
+        </div>
+    
       {% endfor %}
 
-    </div>
-  </div>
-</div>
-
-   
- 
+  {% else %}
+    <p class="mt-5 h1 text-center" >No pins yet. <a href="{{ path('app_pins_create')}}">Be the first!</a> </p>
+  {% endif %} 
 {% endblock %}
