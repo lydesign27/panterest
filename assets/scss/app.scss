@@ -5,9 +5,14 @@ $primary-font : 'Montserrat', sans-serif;
 html, body {
     font-family: $primary-font;
 }
-.vich-image .form-check {
-    @extend .mt-3 ;
-}
+.vich-image {
+    .form-check {
+        @extend .mt-3 ;
+    }
+    img {
+        @extend .mb-2, .rounded, .shadow, .img-thumbnail;
+    }
+} 
 .pin {
     img {
         transition: transform 0.3s ease-out;
