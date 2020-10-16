@@ -4,8 +4,11 @@ namespace App\Entity;
 
 use App\Entity\Traits\Timestampable;
 use App\Repository\UserRepository;
+<<<<<<< HEAD
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+=======
+>>>>>>> b3cbb4e4b9a4485f70442f4055ac831537cdadd7
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -50,6 +53,7 @@ class User implements UserInterface
      */
     private $password;
 
+<<<<<<< HEAD
     /**
      * @ORM\OneToMany(targetEntity=Pin::class, mappedBy="user", orphanRemoval=true)
      */
@@ -60,6 +64,8 @@ class User implements UserInterface
         $this->pins = new ArrayCollection();
     }
 
+=======
+>>>>>>> b3cbb4e4b9a4485f70442f4055ac831537cdadd7
    
 
     public function getId(): ?int
@@ -164,6 +170,7 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+<<<<<<< HEAD
     /**
      * @return Collection|Pin[]
      */
@@ -195,5 +202,7 @@ class User implements UserInterface
         return $this;
     }
 
+=======
+>>>>>>> b3cbb4e4b9a4485f70442f4055ac831537cdadd7
    
 }
