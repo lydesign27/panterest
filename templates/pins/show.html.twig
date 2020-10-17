@@ -7,9 +7,7 @@
     <div class="col-md-6 mx-auto">
     <article class="pin bg-white rounded shadow">
         <div class="rounded-top mw-100 overflow-hidden">
-          <a href="{{ path('app_pins_show',{id: pin.id} )}}">
-            <img class="w-100 " src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('build/images/placeholder.png')) | imagine_filter('squared_thumbnail') }}" alt="{{ pin.title }}" />
-          </a>
+            <img class="w-100 " src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('build/images/placeholder.png')) | imagine_filter('squared_thumbnail') }}" alt="{{ pin.title }}" />     
         </div>
         <h2 class="pl-3 pt-3 text-secondary">
           <a class=" text-muted text-decoration-none" href="{{ path('app_pins_show',{id: pin.id} )}}">{{ pin.title }}</a> 
@@ -18,7 +16,7 @@
             <time datetime=" {{ pin.createdAt|date('Y-m-d H:i:s')}}"></time> 
             {{ pin.createdAt|ago}} <br>
            by <small> {{ pin.user.fullName }}</small>  </p>
-        <p class="m-4">{{ pin.description }} </p> 
+        <p class="m-3 text-break">{{ pin.description }} </p> 
         
       
 
