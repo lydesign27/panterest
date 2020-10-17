@@ -17,9 +17,6 @@
             {{ pin.createdAt|ago}} <br>
            by <small> {{ pin.user.fullName }}</small>  </p>
         <p class="m-3 text-break">{{ pin.description }} </p> 
-        
-      
-
 <div class="pl-3 pb-3">
 <a href="{{ path('app_pins_edit', {id: pin.id})}}" class="btn btn-light" >Edit</a> 
 <a href="#" onclick="event.preventDefault(); confirm('Are you sure ?') && 
