@@ -1,1 +1,2 @@
 'Invalid credentials.' : 'Oopss, votre mot de passe ne correspond pas !'
+'Invalid CSRF token.' : 'Oops ! invalid CSRF Token.'
