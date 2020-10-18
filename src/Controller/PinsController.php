@@ -23,7 +23,7 @@ class PinsController extends AbstractController
      */
     public function index(PinRepository $pinRepository): Response
     {
-        //dd($pinRepository->findAll());
+        
         $pins = $pinRepository->findBY([], ['createdAt' => 'DESC']);
         return $this->render('pins/index.html.twig', compact('pins'));
     }
@@ -41,8 +41,8 @@ class PinsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $leidi = $userRepo->findOneBy(['email' => 'leidi@gmail.com']);
-            $pin->setUser($leidi);
+          
+            $pin->setUser($this->getUser());
             $em->persist($pin);
             $em->flush();
             
